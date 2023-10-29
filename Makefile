@@ -12,6 +12,7 @@ endif
 .PHONY: logs
 
 install:
+	mkdir outputs || true
 	sudo rm -rf /lib/systemd/system/logger.service
 	sudo cp ./logger.service /lib/systemd/system/logger.service
 	sudo systemctl daemon-reload
