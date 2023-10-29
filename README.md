@@ -46,4 +46,3 @@ make logs service=<service> lines=<lines>
 ```
 
 Where `<service>` is the name of the service to generate logs for, and `<lines>` is the number of lines to generate logs for. If `<lines>` is not specified, it will default to 1000.
-```
