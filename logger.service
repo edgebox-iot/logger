@@ -1,0 +1,29 @@
+[Unit]
+Description=Edgebox Services Logger
+ConditionPathExists=/home/system/
+After=network.target
+ 
+[Service]
+Type=simple
+User=root
+Group=root
+LimitNOFILE=1024
+
+Restart=always
+RestartSec=10
+startLimitIntervalSec=60
+
+WorkingDirectory=/home/system/components/logger
+ExecStart=make run
+
+# make sure log directory exists and owned by syslog
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/log/logger
+ExecStartPre=/bin/chown root:root /var/log/logger
+ExecStartPre=/bin/chmod 755 /var/log/logger
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=logger
+ 
+[Install]
+WantedBy=multi-user.target
