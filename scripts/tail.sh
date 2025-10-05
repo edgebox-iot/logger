@@ -50,9 +50,9 @@ if [ $found -eq 0 ]; then
   # Set working directory to /home/system/components/ws/
   cd /home/system/components/ws/
 
-  # Get the last 100000 lines of the docker-compose logs -f <app_id> and save to a file in /home/system/components/logger/outputs/<app_id>.log and terminate
+  # Get the last 100000 lines of the docker compose logs -f <app_id> and save to a file in /home/system/components/logger/outputs/<app_id>.log and terminate
   # if the program has error do not save file, and exit
-  docker-compose logs --tail $lines $target  > /home/system/components/logger/outputs/$target.log || (rm /home/system/components/logger/outputs/$target.log && exit 1)
+  docker compose logs --tail $lines $target  > /home/system/components/logger/outputs/$target.log || (rm /home/system/components/logger/outputs/$target.log && exit 1)
 
   # Remove the first line of the file
   sed -i '1d' /home/system/components/logger/outputs/$1.log
